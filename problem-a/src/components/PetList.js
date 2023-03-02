@@ -1,4 +1,5 @@
 import React from 'react'; //import React Component
+import { Link } from 'react-router-dom';
 
 export default function PetList(props) {
   let pets = props.pets || []; //handle if not provided a prop
@@ -8,7 +9,7 @@ export default function PetList(props) {
 
   return (
     <div>
-      <h2>Dogs for Adoption</h2>
+      <h1>Dogs for Adoption</h1>
       <div className="row">
           {petCards}
       </div>
@@ -17,6 +18,7 @@ export default function PetList(props) {
 }
 
 function PetCard(props) {
+
   let pet = props.pet; //shortcut
   return (
     <div className="col-4 flex-grow-1">
@@ -25,7 +27,7 @@ function PetCard(props) {
         <div className="card-body">
           <h3 className="card-title">{pet.name}</h3>
           <p className="card-text">{pet.sex} {pet.breed}</p>
-          <button className="btn btn-primary">Meet {pet.name}</button>
+          <Link to={"/adopt/" + pet.name} className="btn btn-primary">Meet {pet.name}</Link>
         </div>
       </div>
     </div>
